@@ -1,7 +1,8 @@
 **Install ansible in Control Node, As am using Amazon Linux2 OS, Amazon-linux-extras will install all required dependencies**
 
 ```bash
-amazon-linux-extras install ansible2 -y
+sudo amazon-linux-extras install epel -y
+sudo yum install ansible -y
 ```
 
 verify ansible version by running below command
@@ -81,7 +82,7 @@ ssh-keygen -t rsa
 ```
 
 ```bash
-ssh-copy-id ansibleuser@Managed-node-1/2/3
+ssh-copy-id ansibleusr@Managed-node-1/2/3
 ```
 
 Now test the Password-less authentication. It should not prompt any password.
