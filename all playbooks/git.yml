@@ -10,6 +10,7 @@ To install git
       yum:
         name: git
         state: present
+    tags: install_git
 
 
 To remove git & files
@@ -24,6 +25,8 @@ To remove git & files
       yum:
         name: git
         state: absent
+    tags: stop_git
 
     - name: remove git files
       command: yum autoremove -y
+    tags: remove_git_files
