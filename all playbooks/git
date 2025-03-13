@@ -1,0 +1,29 @@
+To install git
+
+---
+- name: Install git
+  hosts: clients
+  become: true
+
+  tasks:
+    - name: Install git
+      yum:
+        name: git
+        state: present
+
+
+To remove git & files
+
+---
+- name: remove git
+  hosts: clients
+  become: true
+
+  tasks:
+    - name: remove git
+      yum:
+        name: git
+        state: absent
+
+    - name: remove git files
+      command: yum autoremove -y
