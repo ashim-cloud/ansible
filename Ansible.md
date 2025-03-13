@@ -1,6 +1,7 @@
 **Install ansible in Control Node, As am using Amazon Linux2 OS, Amazon-linux-extras will install all required dependencies**
 
 ```bash
+sudo yum update -y && sudo yum upgrade -y
 sudo amazon-linux-extras install epel -y
 sudo yum install ansible -y
 ```
