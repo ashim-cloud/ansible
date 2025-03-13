@@ -1,6 +1,6 @@
 ---
 - name: Install httpd
-  hosts: 172.31.44.46
+  hosts: all
   become: true
 
   tasks:
@@ -17,5 +17,5 @@
 
     - name: copy web content to /var/ww/html location
       copy:
-        src: /home/ansibleusr/index.html
+        src: /home/controller/ansiblelab/all playbooks/index.html
         dest: /var/www/html/
