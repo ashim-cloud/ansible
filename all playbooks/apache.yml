@@ -1,0 +1,67 @@
+To install apache on Woker machine
+
+---
+- name: Install httpd
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: copy web content to /var/ww/html location
+      copy:
+        src: /home/controller/ansiblelab/all playbooks/index.html
+        dest: /var/www/html/
+
+
+To delete apache on worker machine
+
+---
+- name: Remove Apache (httpd)
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Stop httpd service
+      service:
+        name: httpd
+        state: stopped
+        enabled: no
+
+    - name: Remove httpd package
+      yum:
+        name: httpd
+        state: absent
+
+    - name: Remove web content from /var/www/html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+
+
+
+
+Using Ad-hoc cmds            [-b] -> it is consider as superuser[root]
+-----------------
+
+To install
+ansible all -m yum -a "name=httpd state=present" -b
+
+To Start Service
+ansible all -m service -a "name=httpd state=started enabled=true" -b
+
+To Stop Service
+ansible all -m service -a "name=httpd state=stopped enabled=true" -b
+
+To Remove
+ansible all -m service -a "name=httpd state=stopped enabled=no" -b
+ansible all -m yum -a "name=httpd state=absent" -b
