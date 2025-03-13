@@ -2,15 +2,19 @@
 - name: install based on OS
   hosts: all
   become: true
-  tasks: 
-    - name: install git if OS in Redhat
-      yum:
-        name: git
-        state: installed
-      when: ansible_os_family == 'RedHat'
-
+  tasks:
     - name: Install git on Ubuntu
       apt:
         name: git
         state: present
-      when: ansible_os_family == 'Debian'     
+      when: ansible_os_family == 'Debian'
+      tags:
+        - install_git_though_apt
+
+    - name: install git if OS in Amazon linux
+      yum:
+        name: git
+        state: installed
+      when: ansible_os_family == 'RedHat'
+      tags:
+        - install_git_through_yum
