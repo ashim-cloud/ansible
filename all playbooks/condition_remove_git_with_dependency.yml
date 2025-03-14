@@ -1,0 +1,35 @@
+---
+- name: install based on OS
+  hosts: all
+  become: true
+  tasks:
+    - name: remove git on Ubuntu
+      apt:
+        name: git
+        state: absent
+      when: ansible_os_family == 'Debian'
+      tags:
+        - remove_git_though_apt
+
+    - name: remove git dependency in 'Debian'
+      apt:
+        autoremove: yes
+        purge: yes
+      when: ansible_os_family == 'Debian'
+      tags:
+        - remove_git_dependency_on_Debian
+
+    - name: remove git if OS in Amazon linux
+      yum:
+        name: git
+        state: absent
+      when: ansible_os_family == 'RedHat'
+      tags:
+        - remove_git_through_yum
+
+    - name: remove git dependency in RHEL
+      yum:
+        autoremove: yes
+      when: ansible_os_family == 'RedHat'
+      tags:
+        - remove_git_dependency_on_RHEL
