@@ -1,0 +1,10 @@
+installed: It will install the package
+present: Ensures the resource is installed or exists, if not, it will install it.
+absent: Ensures the resource is not installed or exists, if it does, it will remove or delete it.
+started: Ensures the service is running; if not, it will start it.
+stopped: Ensures the service is stopped; if it's running, it will stop it.
+restarted: Ensures the service is restarted (stopped and started again).
+reloaded: Ensures the service is reloaded to apply new configurations.
+enabled: Ensures the service is enabled to start automatically on boot.
+disabled: Ensures the service is disabled from starting on boot.
+latest: Ensures the package is installed at the latest available version.
