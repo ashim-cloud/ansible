@@ -1,0 +1,24 @@
+---
+- name: Remove Apache (httpd)
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Stop httpd service
+      service:
+        name: httpd
+        state: stopped
+        enabled: no
+    tags: stop_httpd
+
+    - name: Remove httpd package
+      yum:
+        name: httpd
+        state: absent
+      tags: remove_httpd
+
+    - name: Remove web content from /var/www/html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+      tags: remove_content
