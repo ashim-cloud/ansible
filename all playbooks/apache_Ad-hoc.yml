@@ -1,12 +1,12 @@
 To install
-ansible all -m yum -a "name=httpd state=present" -b --tags install_httpd
+ansible all -m yum -a "name=httpd state=present" -b
 
 To start
-ansible all -m service -a "name=httpd state=started enabled=true" -b --tags start_httpd
+ansible all -m service -a "name=httpd state=started enabled=true" -b
 
 To stop
-ansible all -m service -a "name=httpd state=stopped enabled=true" -b --tags stop_httpd
+ansible all -m service -a "name=httpd state=stopped enabled=true" -b
 
 To remove
-ansible all -m service -a "name=httpd state=stopped enabled=no" -b --tags stop_httpd
-ansible all -m yum -a "name=httpd state=absent" -b --tags remove_httpd
+ansible all -m service -a "name=httpd state=stopped enabled=no" -b
+ansible all -m yum -a "name=httpd state=absent" -b
