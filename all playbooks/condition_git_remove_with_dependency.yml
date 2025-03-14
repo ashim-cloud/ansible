@@ -28,8 +28,7 @@
         - remove_git_through_yum
 
     - name: remove git dependency in RHEL
-      yum:
-        autoremove: yes
+      command: yum autoremove -y
       when: ansible_os_family == 'RedHat'
       tags:
         - remove_git_dependency_on_RHEL
