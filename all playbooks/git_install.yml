@@ -1,0 +1,11 @@
+---
+- name: Install git
+  hosts: clients
+  become: true
+
+  tasks:
+    - name: Install git
+      yum:
+        name: git
+        state: present
+    tags: install_git
