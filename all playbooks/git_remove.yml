@@ -1,0 +1,15 @@
+---
+- name: remove git
+  hosts: clients
+  become: true
+
+  tasks:
+    - name: remove git
+      yum:
+        name: git
+        state: absent
+    tags: stop_git
+
+    - name: remove git files
+      command: yum autoremove -y
+    tags: remove_git_files
