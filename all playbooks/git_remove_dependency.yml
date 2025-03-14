@@ -1,0 +1,11 @@
+---
+- name: install based on OS
+  hosts: all
+  become: true
+  tasks:
+
+    - name: remove git dependency in RHEL
+      command: yum autoremove -y
+      when: ansible_os_family == 'RedHat'
+      tags:
+        - remove_git_dependency_on_RHEL
