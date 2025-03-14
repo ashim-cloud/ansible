@@ -1,0 +1,24 @@
+---
+- name: Install httpd
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+    tags: install_httpd
+
+    - name: Start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    tags: start_httpd
+
+    - name: copy web content to /var/ww/html location
+      copy:
+        src: /home/controller/ansiblelab/all playbooks/index.html
+        dest: /var/www/html/
+    tags: copy_content
